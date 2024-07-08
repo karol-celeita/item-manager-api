@@ -1,10 +1,19 @@
 # item-manager-api
 Se implementan dos endpoints para "items": uno para crear un item y otro para listar los items. En routers, se define el endpoint y se llama a una función del servicio, usando esquemas para el body y la respuesta. El servicio actúa como capa intermedia y llama al repositorio.
 
-1. Clonar el repositorio:
+## Ejecutar app:
 
 ``` bash
-git clone https://github.com/karol-celeita/api-item-manager.git
+# Clonar
+$ git clone https://github.com/karol-celeita/api-item-manager.git
+# Ingresar al app
+$ cd app
+# Construir entorno
+$ python -m venv venv
+# Activar entorno
+$ source venv/Scripts/activate
+# Ejecutar app
+$ python main.py
 ```
 
 ## Flujos de Trabajo 
@@ -34,7 +43,7 @@ Utilizamos Gitflow para gestionar las ramas:
 │ ├── __init__.py
 │ ├── constants.py
 │ ├── database.py
-│ └──main.py
+│ └── main.py
 ├── Docker
 │ ├── .dockerignore
 │ ├── docker-compose.yml
