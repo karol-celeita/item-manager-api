@@ -1,0 +1,16 @@
+version: '3.9'
+name: api-item-manager
+services:
+  api:
+    container_name: api
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
+      shm_size: '1gb'
+    env_file: ../.env
+    shm_size: '1gb'
+    ports:
+      - 8000:8000
+    volumes: 
+      - ../:/src:rw
+
