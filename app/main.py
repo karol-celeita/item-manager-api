@@ -1,6 +1,8 @@
 import uvicorn
 from constants import HOST_API, PORT_API, RELOAD, API_VERSION
 from fastapi import FastAPI
+from database import create_tables
+from models.items import Item
 
 app = FastAPI(
     title="API",
@@ -16,6 +18,8 @@ async def root():
 
 if __name__ == "__main__":
 
+    create_tables()
+    
     uvicorn.run(
         "main:app",
         host=HOST_API,
