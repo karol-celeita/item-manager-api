@@ -28,3 +28,17 @@ def create_item(db: Session, item: ItemCreate) -> Item:
     except SQLAlchemyError as e:
         db.rollback()
         raise SQLAlchemyError(f"Failed to create item: {str(e)}")
+
+def get_items(db: Session, skip: int, limit:int) -> list[Item]:
+    """
+    Retrieve a list of items from the database with pagination.
+
+    Args:
+        db (Session): SQLAlchemy database session.
+        skip (int, optional): The number of items to skip before starting to collect the result set. Defaults to 0.
+        limit (int, optional): The maximum number of items to return. Defaults to 10.
+
+    Returns:
+        list[Item]: A list of `Item` objects retrieved from the database.
+    """
+    return db.query(Item).offset(skip).limit(limit).all()

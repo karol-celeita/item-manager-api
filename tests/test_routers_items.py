@@ -30,3 +30,19 @@ def test_create_item():
     assert "created_at" in data
     assert "updated_at" in data
 
+# Test para el endpoint de listado de items
+def test_list_items():
+    # Crear algunos items de prueba usando Faker
+    for _ in range(5):
+        client.post("/api/v1/create/", json={"name": faker.name(), "price": faker.random_number(digits=2)})
+
+    response = client.get("/api/v1/list/")
+    assert response.status_code == 200
+    data = response.json()
+    assert len(data["items"]) >= 5  # Comprueba que al menos hay 5 items
+    for item in data["items"]:
+        assert "id" in item
+        assert "name" in item
+        assert "price" in item
+        assert "created_at" in item
+        assert "updated_at" in item
