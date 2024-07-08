@@ -9,6 +9,10 @@ app = FastAPI(
     redoc_url=None,
     docs_url="/api/v1/docs",
 )
+ 
+@app.get("/ping", tags=["ping"], summary="Verify API is UP ", description="Verify API is UP")
+async def root():
+    return {"message": "pong"}
 
 if __name__ == "__main__":
 
