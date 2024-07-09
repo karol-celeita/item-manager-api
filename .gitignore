@@ -13,8 +13,5 @@ venv/
 # vscode
 .vscode
 
-# Database
-*.db
-
 #test
 .coverage
